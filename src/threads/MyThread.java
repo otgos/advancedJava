@@ -1,13 +1,13 @@
 package threads;
 
-//class MyTask{
-//    void executeTask(){
-//        for (int doc =1; doc<=10; doc++){
-//            System.out.println("@@Printing Document # "+doc +" Printer 2");
-//
-//        }
-//    }
-//}
+class MyTaskWithout{
+    void executeTask(){
+        for (int doc =1; doc<=10; doc++){
+            System.out.println("@@Printing Document # "+doc +" Printer 2");
+
+        }
+    }
+}
 //My task IS-A Thread
 //class MyTask extends Thread {
 //    @Override
@@ -101,7 +101,7 @@ public class MyThread {
         //In such cases we use OS/JVM shall give message that app is not respondin...
 
 
-        //Now, main and MyTask are executing both parallely or concurrently.
+        //Now, main and MyTask are executing both paralelly or concurrently.
         //job3
         for (int doc =1; doc<=10; doc++){
 
