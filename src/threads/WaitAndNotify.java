@@ -32,21 +32,31 @@ public class WaitAndNotify {
 
     }
 
-    public void withdraw(int amount){
-        synchronized (this){
-            if(balance<=0 || balance<amount){
-                System.out.println("Waiting for for the amount to update...");
+    // para çekme methodu
+    public void withdraw(int amount) {
+        synchronized (this) {
+            if(balance<=0 || balance<amount) {
+
                 try {
-                    wait();
+                    System.out.println("Waiting for the amount to update");
+                    wait(); // thredi bekletiyoruz, notify gelesiye kadar,
+                    // aynı obje içindeki wait ve notify dan bahsediyoruz burada
                 } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
                 }
             }
-            balance = balance - amount;
-            System.out.println("Withdraw is successful. The current balance is : "+balance);
         }
 
-
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        // wait işlemi bittikten sonra , para çekim işlemi gerçekleşebilir
+        balance=balance-amount;
+        System.out.println("Withdrawal is successful. The current balance is "+balance);
     }
     public void deposit(int amount){
         balance = balance +amount;
@@ -56,4 +66,6 @@ public class WaitAndNotify {
             notify();
         }
     }
+
+
 }
